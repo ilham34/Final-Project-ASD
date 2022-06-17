@@ -1,5 +1,6 @@
 import data as d
 
+#komentar
 def cariLurus(wadah, data):
     n = len(wadah)
     l = len(wadah[0])
