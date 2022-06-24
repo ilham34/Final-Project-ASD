@@ -1,5 +1,5 @@
 import data as d
-import datetime
+import datetime as dt
 
 #komentar
 def cariLurus(wadah, data):
@@ -21,5 +21,11 @@ print(cariLurus(d.data, user))
 ##print(len(d.data[0]))
 
 # NO 2
-user2 = input("Masukkan tanggal : ")
-print(cariLurus(d.data, user2))
+tgl = int(input("Masukkan tanggal : "))
+bln = int(input("Masukkan bulan : "))
+tahun = int(input("Masukkan tahun : "))
+jam = int(input("Masukkan jam : "))
+menit = int(input("Masukkan menit : "))
+
+val = dt.datetime(tahun, bln, tgl, jam, menit)
+print(cariLurus(d.data, val))
