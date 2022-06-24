@@ -1,4 +1,5 @@
 import data as d
+import datetime
 
 #komentar
 def cariLurus(wadah, data):
@@ -18,3 +19,7 @@ def cariLurus(wadah, data):
 user = input("Masukkan lokasi : ")
 print(cariLurus(d.data, user))
 ##print(len(d.data[0]))
+
+# NO 2
+user2 = input("Masukkan tanggal : ")
+print(cariLurus(d.data, user2))
