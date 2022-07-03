@@ -1,30 +1,36 @@
 import data as d
 import datetime as dt
+from random import randint
 
-#komentar
-def cariLurus(wadah, data):
-    n = len(wadah)
-    l = len(wadah[0])
-    t = []
-    for i in range(n):
-        for j in range(l):
-            if wadah[i][j] == data:
-                t.append([True, i,j])
-    if t == []:
-        return False
-    else:
-        return t   
+def quicksort(array, idx):
+    if len(array) < 2:
+        return array
+    low, same, high = [], [], []
+    pivot = array[randint(0, len(array) - 1)][idx]
+    for item in array:
+        if item[idx] < pivot:
+            low.append(item)
+        elif item[idx] == pivot:
+            same.append(item)
+        elif item[idx] > pivot:
+            high.append(item)
+    return quicksort(low, idx) + same + quicksort(high, idx)
 
-user = input("Masukkan lokasi : ")
-print(cariLurus(d.data, user))
-##print(len(d.data[0]))
+no1 = quicksort(d.data, 2)
+no2 = quicksort(d.data, 3)
+
+for i in no1:
+    print(i)
+print()
+for a in no2:
+    print(a)
+##user = input("Masukkan lokasi : ")
 
 # NO 2
-tgl = int(input("Masukkan tanggal : "))
-bln = int(input("Masukkan bulan : "))
-tahun = int(input("Masukkan tahun : "))
-jam = int(input("Masukkan jam : "))
-menit = int(input("Masukkan menit : "))
+##tgl = int(input("Masukkan tanggal : "))
+##bln = int(input("Masukkan bulan : "))
+##tahun = int(input("Masukkan tahun : "))
+##jam = int(input("Masukkan jam : "))
+##menit = int(input("Masukkan menit : "))
 
-val = dt.datetime(tahun, bln, tgl, jam, menit)
-print(cariLurus(d.data, val))
+##target = dt.datetime(tahun, bln, tgl, jam, menit)
