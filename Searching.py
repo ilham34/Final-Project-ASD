@@ -17,9 +17,8 @@ def quickSort(a,idx):
             high.append(i)
     return quickSort(low,idx) + same + quickSort(high,idx)
 
-b = quickSort(a,3)
-for i in b:
-    print(i)
+no1 = quickSort(a,2)
+no2 = quickSort(a,3)
 
 def binSe(a, target,z,x):
     low = 0
@@ -56,11 +55,11 @@ def cari(awal, akhir, z):
         print(awal)    
 
 # NO 1
-user = input("Masukkan lokasi : ")
-awal = binSe(b, user, 1, 2)
-akhir = binSe(b, user, 2, 2)
-
-cari(awal, akhir, 2)
+##user = input("Masukkan lokasi : ")
+##awal = binSe(no1, user, 1, 2)
+##akhir = binSe(no1, user, 2, 2)
+##
+##cari(awal, akhir, 2)
 
 # NO 2
 tgl = int(input("Masukkan tanggal : "))
@@ -70,7 +69,7 @@ jam = int(input("Masukkan jam : "))
 menit = int(input("Masukkan menit : "))
 
 val = dt.datetime(tahun, bln, tgl, jam, menit)
-awal = binSe(b, val, 1, 3)
-akhir = binSe(b, val, 2, 3)
+awal = binSe(no2, val, 1, 3)
+akhir = binSe(no2, val, 2, 3)
 
 cari(awal, akhir, 3)
