@@ -2,35 +2,75 @@ import data as d
 import datetime as dt
 from random import randint
 
-def quicksort(array, idx):
-    if len(array) < 2:
-        return array
+a = d.data
+def quickSort(a,idx):
+    if len(a) < 2:
+        return a
     low, same, high = [], [], []
-    pivot = array[randint(0, len(array) - 1)][idx]
-    for item in array:
-        if item[idx] < pivot:
-            low.append(item)
-        elif item[idx] == pivot:
-            same.append(item)
-        elif item[idx] > pivot:
-            high.append(item)
-    return quicksort(low, idx) + same + quicksort(high, idx)
+    pivot = a[randint(0, len(a) - 1)][idx]
+    for i in a:
+        if i[idx] < pivot:
+            low.append(i)
+        elif i[idx] == pivot:
+            same.append(i)
+        elif i[idx] > pivot:
+            high.append(i)
+    return quickSort(low,idx) + same + quickSort(high,idx)
 
-no1 = quicksort(d.data, 2)
-no2 = quicksort(d.data, 3)
-
-for i in no1:
+b = quickSort(a,3)
+for i in b:
     print(i)
-print()
-for a in no2:
-    print(a)
-##user = input("Masukkan lokasi : ")
+
+def binSe(a, target,z,x):
+    low = 0
+    high = len(a) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if a[mid][x] < target:
+            low = mid + 1
+        elif a[mid][x] > target:
+            high = mid - 1
+        else:
+            if z == 1:
+                if mid - 1 < 0:
+                    return mid
+                if a[mid - 1][x] != target:
+                    return mid
+                high = mid - 1
+            elif z == 2:
+                if mid + 1 > (len(a)-1):
+                    return mid
+                if a[mid + 1][x] != target:
+                    return mid
+                low = mid + 1
+    return False
+
+
+def cari(awal, akhir, z):
+    if awal != False and akhir != False:
+        for i in range(awal, akhir + 1):
+            print(True, (i, z))
+    else:
+        print(awal)    
+
+# NO 1
+user = input("Masukkan lokasi : ")
+awal = binSe(b, user, 1, 2)
+akhir = binSe(b, user, 2, 2)
+
+cari(awal, akhir, 2)
 
 # NO 2
-##tgl = int(input("Masukkan tanggal : "))
-##bln = int(input("Masukkan bulan : "))
-##tahun = int(input("Masukkan tahun : "))
-##jam = int(input("Masukkan jam : "))
-##menit = int(input("Masukkan menit : "))
+tgl = int(input("Masukkan tanggal : "))
+bln = int(input("Masukkan bulan : "))
+tahun = int(input("Masukkan tahun : "))
+jam = int(input("Masukkan jam : "))
+menit = int(input("Masukkan menit : "))
 
-##target = dt.datetime(tahun, bln, tgl, jam, menit)
+val = dt.datetime(tahun, bln, tgl, jam, menit)
+awal = binSe(b, val, 1, 3)
+akhir = binSe(b, val, 2, 3)
+
+cari(awal, akhir, 3)
